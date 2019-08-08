@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                gradle copyFiles
             }
         }
         stage('Test') {
