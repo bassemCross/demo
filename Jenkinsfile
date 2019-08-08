@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh './gradlew copyFiles'
+                sh 'gradle copyFiles'
             }
         }
         stage('Test') {
