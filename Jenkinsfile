@@ -2,6 +2,17 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: scm.branches,
+                    doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
+                    extensions: scm.extensions + [[$class: 'GitLFSPull']],
+                    userRemoteConfigs: scm.userRemoteConfigs
+                ])
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
